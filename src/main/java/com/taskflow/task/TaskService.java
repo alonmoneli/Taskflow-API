@@ -21,7 +21,6 @@ public class TaskService {
     public Task createTask(Task task) {
         task.setStatus(TaskStatus.TODO);
         task.setCreatedAt(LocalDateTime.now());
-
         return taskRepository.save(task);
     }
 }
