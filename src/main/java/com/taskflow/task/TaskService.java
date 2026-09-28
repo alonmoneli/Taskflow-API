@@ -23,4 +23,23 @@ public class TaskService {
         task.setCreatedAt(LocalDateTime.now());
         return taskRepository.save(task);
     }
+
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
+    }
+
+    public Task updateTask(Long id, Task updatedTask) {
+        Task task = getTaskById(id);
+
+        task.setTitle(updatedTask.getTitle());
+        task.setDescription(updatedTask.getDescription());
+        task.setStatus(updatedTask.getStatus());
+
+        return taskRepository.save(task);
+    }
+
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
+    }
 }

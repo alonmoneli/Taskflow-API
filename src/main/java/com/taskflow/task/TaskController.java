@@ -24,4 +24,20 @@ public class TaskController {
     public Task createTask(@RequestBody @Valid Task task) {
         return taskService.createTask(task);
     }
+
+    @GetMapping("/{id}")
+    public Task getTaskById(@PathVariable Long id) {
+        return taskService.getTaskById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Task updateTask(@PathVariable Long id,
+                           @RequestBody @Valid Task task) {
+        return taskService.updateTask(id, task);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+    }
 }
